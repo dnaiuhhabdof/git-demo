@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios Browser Example</title>
+    <!-- 引入 Axios 的 CDN 链接 -->
+</head>
+
+<body>
+    
+    <button id="get-data-btn">获取数据</button>
+    <script>
+        const link = function (val,next) {
+            this.val = (val=undefined? null : val)
+            this.next = (next=undefined? null : next)
+        };
+        let nums = [1,2,3,4]
+        let i = 0
+        const createfun = (nums)=>{
+            let i= 0
+            let rhead = new link(0);
+            let head = rhead;
+            if(nums.length === 0) return rhead;
+            while(i < nums.length){
+                let node = new link(nums[i]);
+                head.next = node;
+                head = node;
+                i++;
+            }
+            return rhead;
+        }
+        const head = createfun(nums);
+        console.log(head.next.next.val);
+    </script>
+</body>
+
+</html>
